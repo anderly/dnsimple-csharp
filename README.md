@@ -73,7 +73,7 @@ Install REST API wrapper:
 
 	using DNSimple;
     var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
-    // You can up to 6 nameservers
+    // You can pass up to 6 nameservers
 	dynamic result = dns.SetNameServers("yourdomain.com", "n1.dnsimple.com", "n2.dnsimple.com", "ns3.dnsimple.com", "ns4.dnsimple.com");
 
 [0]: https://dnsimple.com/documentation/api
