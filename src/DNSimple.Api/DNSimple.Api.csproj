@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contacts.cs" />
+    <Compile Include="NameServers.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="SSL.cs" />
     <Compile Include="Sharing.cs" />
