@@ -223,7 +223,7 @@ namespace DNSimple
 		/// This API accepts up to 6 name servers.
 		/// </remarks>
 		/// <param name="name">The domain for which to set the name servers</param>
-		/// <param name="renew_whois_privacy">Whether to renew the Whois Privacy Service</param>
+		/// <param name="name_servers">List of name servers (up to 6) to set for the domain</param>
 		public dynamic SetNameServers(string name, params string[] name_servers)
 		{
 			Require.Argument("name", name);
@@ -238,7 +238,7 @@ namespace DNSimple
 
 			dynamic payload = new ExpandoObject();
 			var ns = new Dictionary<string, string>();
-			for (int i = 0; i < name_servers.Length; i++)
+			for (var i = 0; i < name_servers.Length; i++)
 			{
 				ns.Add("ns" + (i+1), name_servers[i]);
 			}

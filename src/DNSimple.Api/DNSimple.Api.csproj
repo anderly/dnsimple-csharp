@@ -50,6 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacts.cs" />
+    <Compile Include="Users.cs" />
+    <Compile Include="SSL.cs" />
+    <Compile Include="Sharing.cs" />
+    <Compile Include="WhoisPrivacyProtection.cs" />
+    <Compile Include="ExtendedAttributes.cs" />
+    <Compile Include="TemplateRecords.cs" />
+    <Compile Include="VanityNameServers.cs" />
+    <Compile Include="Templates.cs" />
+    <Compile Include="Services.cs" />
+    <Compile Include="Records.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Infrastructure\JsonFxDeserializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
