@@ -18,24 +18,24 @@ namespace DNSimple
 		/// Base URL of API (defaults to https://dnsimple.com/)
 		/// </summary>
 		public string BaseUrl { get; set; }
-		private string AccountId { get; set; }
-		private string ApiKey { get; set; }
+		private string Username { get; set; }
+		private string Password { get; set; }
 
 		private RestClient _client;
 
 		/// <summary>
 		/// Initializes a new client with the specified credentials.
 		/// </summary>
-		/// <param name="accountId">The AccountId to authenticate with</param>
-		/// <param name="apiKey">The ApiKey to authenticate with</param>
-		public DNSimpleRestClient(string accountId, string apiKey)
+		/// <param name="username">The username to authenticate with</param>
+		/// <param name="password">The password to authenticate with</param>
+		public DNSimpleRestClient(string username, string password)
 		{
 			// Typically this would be something like "v1" or "2012-01-01", so we'll just stub it out empty 
 			// for now to allow for future support
 			ApiVersion = "";
 			BaseUrl = "https://dnsimple.com/";
-			AccountId = accountId;
-			ApiKey = apiKey;
+			Username = username;
+			Password = password;
 
 			// silverlight friendly way to get current version
 			var assembly = Assembly.GetExecutingAssembly();
@@ -45,7 +45,7 @@ namespace DNSimple
 			_client = new RestClient
 			          	{
 			          		UserAgent = "dnsimple-sdk-csharp/" + version,
-			          		Authenticator = new HttpBasicAuthenticator(AccountId, ApiKey),
+							Authenticator = new HttpBasicAuthenticator(Username, Password),
 			          		BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion)
 			          	};
 			_client.AddHandler("application/json", new JsonFxDeserializer());
