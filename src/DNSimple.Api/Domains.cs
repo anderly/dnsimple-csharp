@@ -1,4 +1,6 @@
-﻿using RestSharp;
+﻿using System.Collections.Generic;
+using System.Dynamic;
+using RestSharp;
 using RestSharp.Validation;
 
 namespace DNSimple
@@ -16,9 +18,9 @@ namespace DNSimple
 
 			var request = new RestRequest
 			              	{
-			              		Resource = "domains/{Name}"
+			              		Resource = "domains/{name}"
 			              	};
-			request.AddUrlSegment("Name", name);
+			request.AddUrlSegment("name", name);
 
 			return Execute<dynamic>(request);
 		}
@@ -59,7 +61,9 @@ namespace DNSimple
 								RequestFormat = DataFormat.Json,
 			              		Resource = "domains"
 			              	};
-			request.AddBody(new { domain = new { name }});
+			dynamic payload = new ExpandoObject();
+			payload.domain = new { name = name };
+			request.AddBody(payload);
 
 			return Execute<dynamic>(request);
 		}
@@ -75,9 +79,9 @@ namespace DNSimple
 
 			var request = new RestRequest(Method.DELETE)
 			{
-				Resource = "domains/{Name}"
+				Resource = "domains/{name}"
 			};
-			request.AddUrlSegment("Name", name);
+			request.AddUrlSegment("name", name);
 
 			return Execute<dynamic>(request);
 		}
@@ -87,6 +91,162 @@ namespace DNSimple
 			Require.Argument("id", id);
 
 			return GetDomain(id.ToString());
+		}
+
+		/// <summary>
+		/// Check if the specified domain is available for registration.
+		/// Makes a GET request the Domains Check resource (/domains/{name}/check).
+		/// </summary>
+		/// <param name="name">The Name of the domain to check</param>
+		public dynamic CheckDomain(string name)
+		{
+			Require.Argument("name", name);
+
+			var request = new RestRequest
+			{
+				Resource = "domains/{name}/check"
+			};
+			request.AddUrlSegment("name", name);
+
+			return Execute<dynamic>(request);
+		}
+
+		/// <summary>
+		/// Register a domain name with DNSimple and the appropriate domain registry.
+		/// Makes a POST request to the Domain Registrations resource (domain_registrations).
+		/// </summary>
+		/// <remarks>
+		/// Your account must already be active for this command to complete successfully. 
+		/// You will be automatically charged the 1 year registration fee upon successful registration, so please be careful with this command.
+		/// </remarks>
+		/// <param name="name">The domain name to register</param>
+		/// <param name="registrant_id">ID for an existing account contact</param>
+		public dynamic RegisterDomain(string name, int registrant_id)
+		{
+			Require.Argument("name", name);
+			Require.Argument("registrant_id", registrant_id);
+
+			var request = new RestRequest(Method.POST)
+			{
+				RequestFormat = DataFormat.Json,
+				Resource = "domain_registrations"
+			};
+
+			dynamic payload = new ExpandoObject();
+			payload.domain = new
+			{
+				name = name,
+				registrant_id = registrant_id
+			};
+
+			request.AddBody(payload);
+
+			return Execute<dynamic>(request);
+		}
+
+		/// <summary>
+		/// Transfer a domain name from another domain registrar into DNSimple.
+		/// Makes a POST request the Domain Transfer resource (domain_transfers).
+		/// </summary>
+		/// <remarks>
+		/// Your account must already be active for this command to complete successfully. 
+		/// You will be automatically charged the 1 year transfer fee upon successful transfer of the domain, which may take anywhere from a few minutes up to 7 days.
+		/// 
+		/// Only domains that do not require extended attributes may be transferred through the API at this time. 
+		/// For example, domains ending in .com and .net may be transferred through the API, however domains ending in .us and .ca may not.
+		/// </remarks>
+		/// <param name="name">The domain name to transfer</param>
+		/// <param name="registrant_id">ID for an existing contact</param>
+		public dynamic TransferDomain(string name, int registrant_id, string authinfo = null)
+		{
+			Require.Argument("name", name);
+			Require.Argument("registrant_id", registrant_id);
+
+			var request = new RestRequest(Method.POST)
+			{
+				RequestFormat = DataFormat.Json,
+				Resource = "domain_transfers"
+			};
+
+			dynamic payload = new ExpandoObject();
+			payload.domain = new
+			                 	{
+			                 		name = name,
+			                 		registrant_id = registrant_id
+			                 	};
+			if (!string.IsNullOrWhiteSpace(authinfo))
+			{
+				payload.transfer_order = new { authinfo = authinfo };
+			}
+
+			request.AddBody(payload);
+
+			return Execute<dynamic>(request);
+		}
+
+		/// <summary>
+		/// Renew a domain name in your account.
+		/// Makes a POST request the Domain Renewal resource (domain_renewal).
+		/// </summary>
+		/// <remarks>
+		/// This will renew the domain for 1 year.
+		/// </remarks>
+		/// <param name="name">The domain name to renew</param>
+		/// <param name="renew_whois_privacy">Whether to renew the Whois Privacy Service</param>
+		public dynamic RenewDomain(string name, bool renew_whois_privacy = false)
+		{
+			Require.Argument("name", name);
+
+			var request = new RestRequest(Method.POST)
+			{
+				RequestFormat = DataFormat.Json,
+				Resource = "domain_renewal"
+			};
+
+			dynamic payload = new ExpandoObject();
+			payload.domain = new
+			{
+				name = name,
+				renew_whois_privacy = renew_whois_privacy
+			};
+
+			request.AddBody(payload);
+
+			return Execute<dynamic>(request);
+		}
+
+		/// <summary>
+		/// Change the name servers either to external name servers or back to DNSimple's name servers.
+		/// Makes a POST request the Name Servers resource (domains/{id_or_name}/name_servers).
+		/// </summary>
+		/// <remarks>
+		/// This API accepts up to 6 name servers.
+		/// </remarks>
+		/// <param name="name">The domain for which to set the name servers</param>
+		/// <param name="renew_whois_privacy">Whether to renew the Whois Privacy Service</param>
+		public dynamic SetNameServers(string name, params string[] name_servers)
+		{
+			Require.Argument("name", name);
+			Validate.IsBetween(name_servers.Length, 1, 6);
+
+			var request = new RestRequest(Method.POST)
+			{
+				RequestFormat = DataFormat.Json,
+				Resource = "domains/{name}/name_servers"
+			};
+			request.AddUrlSegment("name", name);
+
+			dynamic payload = new ExpandoObject();
+			var ns = new Dictionary<string, string>();
+			for (int i = 0; i < name_servers.Length; i++)
+			{
+				ns.Add("ns" + (i+1), name_servers[i]);
+			}
+			payload.name_servers = ns;
+
+			request.AddBody(payload);
+
+			return Execute<dynamic>(request);
 		}
 	}
 }
