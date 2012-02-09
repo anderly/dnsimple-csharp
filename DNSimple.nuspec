@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata>
+		<id>DNSimple</id>
+		<version>0.1.1</version>
+		<authors>Adam Anderly</authors>
+		<description>DNSimple REST API helper library</description>
+		<language>en-US</language>
+		<projectUrl>http://github.com/anderly/dnsimple-csharp</projectUrl>
+		<iconUrl>https://github.com/anderly/dnsimple-csharp/raw/master/DNSimple_Logo_small.jpg</iconUrl>
+		<licenseUrl>https://github.com/anderly/dnsimple-csharp/blob/master/LICENSE.txt</licenseUrl>
+		<tags>REST DNS Domains SSL</tags>
+		<dependencies>
+			<dependency id="RestSharp" />
+			<dependency id="JsonFX" />
+		</dependencies>
+		<releaseNotes>
+
+		</releaseNotes>
+	</metadata>
+</package>
