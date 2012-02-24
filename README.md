@@ -94,4 +94,39 @@ Install REST API wrapper:
     var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
 	dynamic result = dns.DeleteRecord("yourdomain.com", record_id: an_existing_dns_record_id);
 
+## Retrieving a list of your DNSimple contacts
+
+    using DNSimple;
+    var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
+	dynamic result = dns.ListContacts();
+	for (var i = 0; i < result.Length; i++)
+	{
+		Console.WriteLine(result[i].contact.last_name);
+	}
+
+## Retrieving a specific contact
+
+	using DNSimple;
+    var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
+	dynamic result = dns.GetContact(an_existing_contact_id);
+	Console.WriteLine(result.contact.last_name);
+	
+## Add a Contact
+
+	using DNSimple;
+    var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
+	dynamic result = dns.AddContact("Jane", "Doe", "123 Ave B", "Miami", "FL", "12345", "US", "jane.doe@example.com", "111 111 1111");
+	
+## Update a Contact
+
+	using DNSimple;
+    var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
+	dynamic result = dns.UpdateContact(an_existing_contact_id, "John", "Doe", "1 SW 1st Street", "Miami", "FL", "33143", "US", "john.doe@gmail.com", "+15551122323", label: "Home");
+	
+## Delete a Contact
+
+	using DNSimple;
+    var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
+	dynamic result = dns.DeleteContact(an_existing_contact_id);
+	
 [0]: https://dnsimple.com/documentation/api
