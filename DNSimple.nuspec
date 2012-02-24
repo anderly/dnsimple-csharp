@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.3</version>
+		<version>0.3.1</version>
 		<authors>Adam Anderly</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
@@ -15,7 +15,7 @@
 			<dependency id="JsonFX" />
 		</dependencies>
 		<releaseNotes>
-			Added Services, Records and Nameserver functionality.
+			Added Contacts, Sharing and Vanity Name Server support.
 		</releaseNotes>
 	</metadata>
 </package>
