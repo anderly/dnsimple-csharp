@@ -8,7 +8,7 @@
     <ProjectGuid>{E0DFBE6E-6167-4A06-A297-D9BD5B237CE8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DNSimple.Api</RootNamespace>
+    <RootNamespace>DNSimple</RootNamespace>
     <AssemblyName>DNSimple.Api</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;FRAMEWORK</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;FRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>

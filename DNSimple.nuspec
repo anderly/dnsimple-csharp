@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.2</version>
+		<version>0.3</version>
 		<authors>Adam Anderly</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>

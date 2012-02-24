@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("DNSimple.Api")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("API wrapper for the DNSimple REST API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("DNSimple.Api")]

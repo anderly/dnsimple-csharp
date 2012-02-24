@@ -2,7 +2,7 @@
 using RestSharp;
 using RestSharp.Deserializers;
 
-namespace DNSimple.Api.Infrastructure
+namespace DNSimple.Infrastructure
 {
 	public class JsonFxDeserializer : IDeserializer
 	{

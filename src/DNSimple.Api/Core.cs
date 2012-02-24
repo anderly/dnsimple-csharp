@@ -1,6 +1,5 @@
 ﻿using System.Reflection;
-using DNSimple.Api.Infrastructure;
-using Newtonsoft.Json.Linq;
+using DNSimple.Infrastructure;
 using RestSharp;
 
 namespace DNSimple
