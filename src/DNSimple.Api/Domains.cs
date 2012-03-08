@@ -90,7 +90,7 @@ namespace DNSimple
 		{
 			Require.Argument("id", id);
 
-			return GetDomain(id.ToString());
+			return DeleteDomain(id.ToString());
 		}
 
 		/// <summary>
