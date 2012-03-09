@@ -2,8 +2,8 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.4.0</version>
-		<authors>Adam Anderly</authors>
+		<version>0.4.1</version>
+		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/anderly/dnsimple-csharp</projectUrl>
