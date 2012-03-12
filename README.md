@@ -1,9 +1,11 @@
-# DNSimple REST API Library for .NET
+# A C# dynamic wrapper for the DNSimple REST API
 
-DNSimple provides a simple HTTP-based API for working with DNS, domain registrations and SSL certificates. Learn more at [https://dnsimple.com/documentation/api][0]
+[DNSimple][0] provides a simple HTTP-based API for working with DNS, domain registrations and SSL certificates. Learn more at [https://dnsimple.com/documentation/api][1]
 
-- This SDK utilizes the power of C# 4.0 dynamics to provide the quickest and most accurate representation of the DNSimple REST API. No models, no DTOs. Everything is an ExpandoObject or an Array of ExpandoObjects.
-- Currently, the domains, records and services resources are the only ones supported. But the plan is to eventually have a complete C# SDK for DNSimple when it's all said and done.
+- This SDK utilizes C# 4.0 dynamics to provide the quickest and most accurate representation of the DNSimple REST API. No models, no DTOs. Everything is an ExpandoObject or an Array of ExpandoObjects.
+- See the [Trello Board][2] for API Parity Status
+
+## Current Release: [v0.4.1 on NuGet][3]
 
 ### Installation
 
@@ -128,5 +130,8 @@ Install REST API wrapper:
 	using DNSimple;
     var dns = new DNSimpleRestClient("yourname@yourdomain.com", "yourpassword");
 	dynamic result = dns.DeleteContact(an_existing_contact_id);
-	
-[0]: https://dnsimple.com/documentation/api
+
+[0]:http://dnsimple.com
+[1]:https://dnsimple.com/documentation/api
+[2]:https://trello.com/board/dnsimple-csharp/4f5e0494e22d5e333ff7816c
+[3]:http://nuget.org/Packages/DNSimple
