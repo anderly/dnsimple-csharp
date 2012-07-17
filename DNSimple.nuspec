@@ -2,12 +2,12 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.4.1</version>
+		<version>0.4.2</version>
 		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/anderly/dnsimple-csharp</projectUrl>
-		<iconUrl>https://github.com/anderly/dnsimple-csharp/raw/master/DNSimple_Logo_small.jpg</iconUrl>
+		<iconUrl>https://github.com/anderly/dnsimple-csharp/raw/master/dnsimple-logo.png</iconUrl>
 		<licenseUrl>https://github.com/anderly/dnsimple-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST DNS Domains SSL</tags>
 		<dependencies>
