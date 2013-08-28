@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
+using System.Threading.Tasks;
 using DNSimple.Infrastructure;
 using RestSharp;
 
@@ -9,7 +11,22 @@ namespace DNSimple
 	/// </summary>
 	public partial class DNSimpleRestClient
 	{
-		/// <summary>
+	    private DNSimpleRestClient()
+	    {
+	        Version version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
+            // Typically this would be something like "v1" or "2012-01-01", so we'll just stub it out empty 
+            // for now to allow for future support
+            ApiVersion = "";
+            BaseUrl = "https://dnsimple.com/";
+
+            _client = new RestClient
+            {
+                UserAgent = "dnsimple-sdk-csharp/" + version,
+                BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion),
+            };
+        }
+
+	    /// <summary>
 		/// DNSimple API version to use when making requests
 		/// </summary>
 		public string ApiVersion { get; set; }
@@ -17,37 +34,26 @@ namespace DNSimple
 		/// Base URL of API (defaults to https://dnsimple.com/)
 		/// </summary>
 		public string BaseUrl { get; set; }
-		private string Username { get; set; }
-		private string Password { get; set; }
 
-		private RestClient _client;
+	    private readonly RestClient _client;
 
-		/// <summary>
-		/// Initializes a new client with the specified credentials.
-		/// </summary>
-		/// <param name="username">The username to authenticate with</param>
-		/// <param name="password">The password to authenticate with</param>
-		public DNSimpleRestClient(string username, string password)
+	    /// <summary>
+	    /// Initializes a new client with the specified credentials.
+	    /// </summary>
+	    /// <param name="username">The username to authenticate with</param>
+	    /// <param name="password">The password to authenticate with</param>
+	    /// <param name="token">API token</param>
+	    public DNSimpleRestClient(string username, string password = null, string token = null) : this()
 		{
-			// Typically this would be something like "v1" or "2012-01-01", so we'll just stub it out empty 
-			// for now to allow for future support
-			ApiVersion = "";
-			BaseUrl = "https://dnsimple.com/";
-			Username = username;
-			Password = password;
-
-			// silverlight friendly way to get current version
-			var assembly = Assembly.GetExecutingAssembly();
-			var assemblyName = new AssemblyName(assembly.FullName);
-			var version = assemblyName.Version;
-
-			_client = new RestClient
-			          	{
-			          		UserAgent = "dnsimple-sdk-csharp/" + version,
-							Authenticator = new HttpBasicAuthenticator(Username, Password),
-			          		BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion)
-			          	};
-			_client.AddHandler("application/json", new JsonFxDeserializer());
+	        if (!String.IsNullOrEmpty(token))
+	        {
+                _client.AddDefaultHeader("X-DNSimple-Token", String.Format("{0}:{1}", username, token));
+	        }
+	        else
+	        {
+	            _client.Authenticator = new HttpBasicAuthenticator(username, password);
+	        }
+	        _client.AddHandler("application/json", new JsonFxDeserializer());
 		}
 
 #if FRAMEWORK
