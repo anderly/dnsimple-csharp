@@ -14,10 +14,8 @@ namespace DNSimple
 	    private DNSimpleRestClient()
 	    {
 	        Version version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
-            // Typically this would be something like "v1" or "2012-01-01", so we'll just stub it out empty 
-            // for now to allow for future support
-            ApiVersion = "";
-            BaseUrl = "https://dnsimple.com/";
+            ApiVersion = "v1";
+            BaseUrl = "https://api.dnsimple.com/";
 
             _client = new RestClient
             {
@@ -27,11 +25,11 @@ namespace DNSimple
         }
 
 	    /// <summary>
-		/// DNSimple API version to use when making requests
+		/// DNSimple API version to use when making requests (defaults to v1)
 		/// </summary>
 		public string ApiVersion { get; set; }
 		/// <summary>
-		/// Base URL of API (defaults to https://dnsimple.com/)
+		/// Base URL of API (defaults to https://api.dnsimple.com/)
 		/// </summary>
 		public string BaseUrl { get; set; }
 
