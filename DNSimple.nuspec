@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.4.2</version>
+		<version>0.5.0</version>
 		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
@@ -11,11 +11,11 @@
 		<licenseUrl>https://github.com/anderly/dnsimple-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST DNS Domains SSL</tags>
 		<dependencies>
-			<dependency id="RestSharp" />
-			<dependency id="JsonFX" />
+			<dependency id="RestSharp" version="102.6" />
+			<dependency id="JsonFX" version="2.0.1106.2610" />
 		</dependencies>
 		<releaseNotes>
-			Added Whois Privacy Protection. Minor bug fixes.
+			Updated to use v1 of API.
 		</releaseNotes>
 	</metadata>
 </package>

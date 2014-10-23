@@ -1,4 +1,4 @@
-nuget.exe update -self
+nuget update -self
 
 if not exist download mkdir download
 if not exist download\package mkdir download\package
@@ -10,4 +10,4 @@ if not exist download\package\dnsimple\lib\4.0 mkdir download\package\dnsimple\l
 copy src\DNSimple.Api\bin\Release\*.* download\package\DNSimple\lib\4.0\
 copy LICENSE.txt download
 
-nuget.exe pack DNSimple.nuspec -BasePath download\package\dnsimple -o download
+nuget pack DNSimple.nuspec -BasePath download\package\dnsimple -o download
