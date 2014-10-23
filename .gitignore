@@ -30,3 +30,6 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 download/
 src/DNSimple.Api.TestConsole/
+
+# NuGet Packages Directory
+packages
