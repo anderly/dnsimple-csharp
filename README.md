@@ -1,6 +1,6 @@
 # A C# dynamic wrapper for the DNSimple REST API
 
-[![Nuget version](http://img.shields.io/nuget/v/dnsimple.svg?style=flat-square)](http://www.nuget.org/packages/DNSimple)
+[![Nuget version](http://img.shields.io/nuget/v/dnsimple.svg?style=flat-square)][3]
 [![License](http://img.shields.io/badge/license-Apache-red.svg?style=flat-square)](http://opensource.org/licenses/Apache-2.0)
 
 [DNSimple][0] provides a simple HTTP-based API for working with DNS, domain registrations and SSL certificates. Learn more at [https://dnsimple.com/documentation/api][1]
@@ -8,7 +8,7 @@
 - This SDK utilizes C# 4.0 dynamics to provide the quickest and most accurate representation of the DNSimple REST API. No models, no DTOs. Everything is an ExpandoObject or an Array of ExpandoObjects.
 - See the [Trello Board][2] for API Parity Status
 
-## Current Release: [v0.5.0 on NuGet][3]
+## Current Release: [v0.5.0 on NuGet][3] [![Nuget Downloads](http://img.shields.io/nuget/dt/dnsimple.svg?style=flat-square)][3]
 
 ### Installation
 
