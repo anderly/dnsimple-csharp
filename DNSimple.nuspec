@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.5.0</version>
+		<version>0.5.1</version>
 		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
@@ -12,10 +12,9 @@
 		<tags>REST DNS Domains SSL</tags>
 		<dependencies>
 			<dependency id="RestSharp" version="102.6" />
-			<dependency id="JsonFX" version="2.0.1106.2610" />
 		</dependencies>
 		<releaseNotes>
-			Updated to use v1 of API.
+			Removed JsonFx Dependency.
 		</releaseNotes>
 	</metadata>
 </package>

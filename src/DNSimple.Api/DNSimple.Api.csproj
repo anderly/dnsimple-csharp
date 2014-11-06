@@ -64,7 +64,6 @@
     <Compile Include="Services.cs" />
     <Compile Include="Records.cs" />
     <Compile Include="Core.cs" />
-    <Compile Include="Infrastructure\JsonFxDeserializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domains.cs" />
   </ItemGroup>

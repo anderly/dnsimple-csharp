@@ -51,7 +51,6 @@ namespace DNSimple
 	        {
 	            _client.Authenticator = new HttpBasicAuthenticator(username, password);
 	        }
-	        _client.AddHandler("application/json", new JsonFxDeserializer());
 		}
 
 #if FRAMEWORK
