@@ -12,9 +12,10 @@
 		<tags>REST DNS Domains SSL</tags>
 		<dependencies>
 			<dependency id="RestSharp" version="102.6" />
+			<dependency id="Newtonsoft.Json" version="6.0.6" />
 		</dependencies>
 		<releaseNotes>
-			Removed JsonFx Dependency.
+			Removed JsonFx dependency. Now using Json.NET for deserialization.
 		</releaseNotes>
 	</metadata>
 </package>

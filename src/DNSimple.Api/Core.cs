@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading.Tasks;
 using DNSimple.Infrastructure;
 using RestSharp;
 
@@ -22,6 +21,7 @@ namespace DNSimple
                 UserAgent = "dnsimple-sdk-csharp/" + version,
                 BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion),
             };
+			_client.AddHandler("application/json", new JsonNetDeserializer());
         }
 
 	    /// <summary>
