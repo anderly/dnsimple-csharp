@@ -13,7 +13,7 @@ namespace DNSimple.Infrastructure
 			//DateFormat = "yyyy-MM-ddTHH:mm:ssZ";
 		}
 
-		public T Deserialize<T>(RestResponse response) where T : new()
+		public T Deserialize<T>(IRestResponse response)
 		{
 			var converter = new ExpandoObjectConverter();
 			if (response.Content.StartsWith("[") && response.Content.EndsWith("]"))

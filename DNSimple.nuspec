@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.5.1</version>
+		<version>0.6.0</version>
 		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
@@ -11,11 +11,11 @@
 		<licenseUrl>https://github.com/anderly/dnsimple-csharp/blob/master/LICENSE.txt</licenseUrl>
 		<tags>REST DNS Domains SSL</tags>
 		<dependencies>
-			<dependency id="RestSharp" version="102.6" />
+			<dependency id="RestSharp" version="105.0.0" />
 			<dependency id="Newtonsoft.Json" version="6.0.6" />
 		</dependencies>
 		<releaseNotes>
-			Removed JsonFx dependency. Now using Json.NET for deserialization.
+			Updated to .NET 4.5 compatibility.
 		</releaseNotes>
 	</metadata>
 </package>
