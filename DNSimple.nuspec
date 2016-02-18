@@ -2,17 +2,17 @@
 <package>
 	<metadata>
 		<id>DNSimple</id>
-		<version>0.6.0</version>
+		<version>0.6.1</version>
 		<authors>Adam Anderly, Geoff Appleford</authors>
 		<description>DNSimple REST API helper library</description>
 		<language>en-US</language>
 		<projectUrl>http://github.com/anderly/dnsimple-csharp</projectUrl>
 		<iconUrl>https://github.com/anderly/dnsimple-csharp/raw/master/dnsimple-logo.png</iconUrl>
 		<licenseUrl>https://github.com/anderly/dnsimple-csharp/blob/master/LICENSE.txt</licenseUrl>
-		<tags>REST DNS Domains SSL</tags>
+		<tags>DNS DNSimple Domains SSL REST</tags>
 		<dependencies>
-			<dependency id="RestSharp" version="105.0.0" />
-			<dependency id="Newtonsoft.Json" version="6.0.6" />
+			<dependency id="RestSharp" version="105.2.3" />
+			<dependency id="Newtonsoft.Json" version="8.0.2" />
 		</dependencies>
 		<releaseNotes>
 			Updated to .NET 4.5 compatibility.
