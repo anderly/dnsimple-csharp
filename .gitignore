@@ -34,3 +34,7 @@ src/DNSimple.Api.TestConsole/
 # NuGet Packages Directory
 packages/
 /src/packages/
+
+*Test*
+*Api2*
+*Linq*

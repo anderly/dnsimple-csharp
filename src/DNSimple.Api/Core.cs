@@ -12,14 +12,14 @@ namespace DNSimple
 	{
 	    private DNSimpleRestClient()
 	    {
-	        Version version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
+	        var version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
             ApiVersion = "v1";
             BaseUrl = "https://api.dnsimple.com/";
 
             _client = new RestClient
             {
                 UserAgent = "dnsimple-sdk-csharp/" + version,
-                BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion),
+                BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion)),
             };
 			_client.AddHandler("application/json", new JsonNetDeserializer());
         }
@@ -59,7 +59,7 @@ namespace DNSimple
 		/// </summary>
 		/// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public T Execute<T>(RestRequest request) where T : new()
+		public T Execute<T>(IRestRequest request) where T : new()
 		{
 			request.AddHeader("Accept", "application/json");
 			request.OnBeforeDeserialization = (resp) =>
@@ -82,7 +82,7 @@ namespace DNSimple
 		/// Execute a manual REST request
 		/// </summary>
 		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public RestResponse Execute(RestRequest request)
+		public IRestResponse Execute(IRestRequest request)
 		{
 			return _client.Execute(request);
 		}
