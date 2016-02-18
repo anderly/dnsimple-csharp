@@ -3,12 +3,12 @@
 [![Nuget version](http://img.shields.io/nuget/v/dnsimple.svg?style=flat)][3]
 [![License](http://img.shields.io/badge/license-Apache-red.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 
-[DNSimple][0] provides a simple HTTP-based API for working with DNS, domain registrations and SSL certificates. Learn more at [https://dnsimple.com/documentation/api][1]
+[DNSimple][0] provides a simple HTTP-based API for working with DNS, domain registrations and SSL certificates. Learn more at [developer.dnsimple.com](http://developer.dnsimple.com/).
 
 - This SDK utilizes C# 4.0 dynamics to provide the quickest and most accurate representation of the DNSimple REST API. No models, no DTOs. Everything is an ExpandoObject or an Array of ExpandoObjects.
 - See the [Trello Board][2] for API Parity Status
 
-## Current Release: [v0.6.0 on NuGet][3] [![Nuget Downloads](http://img.shields.io/nuget/dt/dnsimple.svg?style=flat)][3]
+## Current Release: [v0.6.1 on NuGet][3] [![Nuget Downloads](http://img.shields.io/nuget/dt/dnsimple.svg?style=flat)][3]
 
 ### Installation
 
@@ -135,6 +135,5 @@ Install REST API wrapper:
 	dynamic result = dns.DeleteContact(an_existing_contact_id);
 
 [0]:http://dnsimple.com
-[1]:https://dnsimple.com/documentation/api
 [2]:https://trello.com/board/dnsimple-csharp/4f5e0494e22d5e333ff7816c
 [3]:http://nuget.org/Packages/DNSimple

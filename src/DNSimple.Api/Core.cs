@@ -2,6 +2,7 @@
 using System.Reflection;
 using DNSimple.Infrastructure;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace DNSimple
 {
@@ -10,21 +11,21 @@ namespace DNSimple
 	/// </summary>
 	public partial class DNSimpleRestClient
 	{
-	    private DNSimpleRestClient()
-	    {
-	        var version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
-            ApiVersion = "v1";
-            BaseUrl = "https://api.dnsimple.com/";
+		private DNSimpleRestClient()
+		{
+			var version = new AssemblyName(Assembly.GetExecutingAssembly().FullName).Version;
+			ApiVersion = "v1";
+			BaseUrl = "https://api.dnsimple.com/";
 
-            _client = new RestClient
-            {
-                UserAgent = "dnsimple-sdk-csharp/" + version,
-                BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion)),
-            };
+			_client = new RestClient
+			{
+				UserAgent = "dnsimple-sdk-csharp/" + version,
+				BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion))
+			};
 			_client.AddHandler("application/json", new JsonNetDeserializer());
-        }
+		}
 
-	    /// <summary>
+		/// <summary>
 		/// DNSimple API version to use when making requests (defaults to v1)
 		/// </summary>
 		public string ApiVersion { get; set; }
@@ -33,24 +34,24 @@ namespace DNSimple
 		/// </summary>
 		public string BaseUrl { get; set; }
 
-	    private readonly RestClient _client;
+		private readonly RestClient _client;
 
-	    /// <summary>
-	    /// Initializes a new client with the specified credentials.
-	    /// </summary>
-	    /// <param name="username">The username to authenticate with</param>
-	    /// <param name="password">The password to authenticate with</param>
-	    /// <param name="token">API token</param>
-	    public DNSimpleRestClient(string username, string password = null, string token = null) : this()
+		/// <summary>
+		/// Initializes a new client with the specified credentials.
+		/// </summary>
+		/// <param name="username">The username to authenticate with</param>
+		/// <param name="password">The password to authenticate with</param>
+		/// <param name="token">API token</param>
+		public DNSimpleRestClient(string username, string password = null, string token = null) : this()
 		{
-	        if (!String.IsNullOrEmpty(token))
-	        {
-                _client.AddDefaultHeader("X-DNSimple-Token", String.Format("{0}:{1}", username, token));
-	        }
-	        else
-	        {
-	            _client.Authenticator = new HttpBasicAuthenticator(username, password);
-	        }
+			if (!String.IsNullOrEmpty(token))
+			{
+				_client.AddDefaultHeader("X-DNSimple-Token", String.Format("{0}:{1}", username, token));
+			}
+			else
+			{
+				_client.Authenticator = new HttpBasicAuthenticator(username, password);
+			}
 		}
 
 #if FRAMEWORK
