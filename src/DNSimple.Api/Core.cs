@@ -2,6 +2,7 @@
 using System.Reflection;
 using DNSimple.Infrastructure;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace DNSimple
 {
@@ -19,7 +20,7 @@ namespace DNSimple
             _client = new RestClient
             {
                 UserAgent = "dnsimple-sdk-csharp/" + version,
-                BaseUrl = string.Format("{0}{1}", BaseUrl, ApiVersion),
+                BaseUrl = new Uri(string.Format("{0}{1}", BaseUrl, ApiVersion))
             };
 			_client.AddHandler("application/json", new JsonNetDeserializer());
         }
@@ -78,15 +79,15 @@ namespace DNSimple
 			return response.Data;
 		}
 
-		/// <summary>
-		/// Execute a manual REST request
-		/// </summary>
-		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
-		public RestResponse Execute(RestRequest request)
-		{
-			return _client.Execute(request);
-		}
+        /// <summary>
+        /// Execute a manual REST request
+        /// </summary>
+        /// <param name="request">The RestRequest to execute (will use client credentials)</param>
+        public IRestResponse Execute(RestRequest request)
+        {
+            return _client.Execute(request);
+        }
 #endif
 
-	}
+    }
 }
