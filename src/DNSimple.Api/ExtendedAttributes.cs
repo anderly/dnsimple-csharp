@@ -11,9 +11,9 @@ namespace DNSimple
 		/// Retrieve the extended attributes required for a specific top level domain.
 		/// Makes a GET request to the Extended Attributes resource.
 		/// </summary>
-		/// <param name="name">The tld to retrieve the extended attributes for</param>
+		/// <param name="tld">The tld to retrieve the extended attributes for</param>
 		public dynamic GetExtendedAttributes(string tld) {
-			Require.Argument("tld", tld);
+			Require.Argument(nameof(tld), tld);
 
 			var request = new RestRequest {
 				Resource = "extended_attributes/{tld}"

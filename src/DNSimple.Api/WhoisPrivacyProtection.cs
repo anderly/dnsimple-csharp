@@ -17,7 +17,7 @@ namespace DNSimple
 		/// <param name="name">The name of the domain.</param>
 		public dynamic AddWhoisPrivacyProtection(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -31,7 +31,7 @@ namespace DNSimple
 
 		public dynamic AddWhoisPrivacyProtection(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return AddWhoisPrivacyProtection(id.ToString());
 		}
@@ -44,7 +44,7 @@ namespace DNSimple
 		/// <param name="name">The name of the domain.</param>
 		public dynamic RemoveWhoisPrivacyProtection(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.DELETE)
 			{
@@ -57,7 +57,7 @@ namespace DNSimple
 
 		public dynamic RemoveWhoisPrivacyProtection(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return RemoveWhoisPrivacyProtection(id.ToString());
 		}

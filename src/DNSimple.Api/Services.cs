@@ -28,7 +28,7 @@ namespace DNSimple
 		/// <param name="id">The ID of the service to retrieve</param>
 		public dynamic GetService(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			var request = new RestRequest
 			{
@@ -46,7 +46,7 @@ namespace DNSimple
 		/// <param name="domain">The name of the domain for which to retrieve the applied services</param>
 		public dynamic ListAppliedServices(string domain)
 		{
-			Require.Argument("domain", domain);
+			Require.Argument(nameof(domain), domain);
 
 			var request = new RestRequest
 			{
@@ -64,7 +64,7 @@ namespace DNSimple
 		/// <param name="id">The ID the domain for which to retrieve the applied services</param>
 		public dynamic ListAppliedServices(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return ListAppliedServices(id.ToString());
 		}
@@ -76,7 +76,7 @@ namespace DNSimple
 		/// <param name="domain">The name of the domain for which to retrieve the available services</param>
 		public dynamic ListAvailableServices(string domain)
 		{
-			Require.Argument("domain", domain);
+			Require.Argument(nameof(domain), domain);
 
 			var request = new RestRequest
 			{
@@ -94,7 +94,7 @@ namespace DNSimple
 		/// <param name="id">The ID the domain for which to retrieve the available services</param>
 		public dynamic ListAvailableServices(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return ListAppliedServices(id.ToString());
 		}
@@ -107,8 +107,8 @@ namespace DNSimple
 		/// <param name="service_id">The ID of service to add to the domain</param>
 		public dynamic AddService(string domain, int service_id)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("service_id", service_id);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(service_id), service_id);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -132,8 +132,8 @@ namespace DNSimple
 		/// <param name="service_id">The ID of service to add to the domain</param>
 		public dynamic AddService(int id, int service_id)
 		{
-			Require.Argument("id", id);
-			Require.Argument("service_id", service_id);
+			Require.Argument(nameof(id), id);
+			Require.Argument(nameof(service_id), service_id);
 
 			return AddService(id.ToString(), service_id);
 		}
@@ -146,8 +146,8 @@ namespace DNSimple
 		/// <param name="service_id">The ID of service to remove from the domain</param>
 		public dynamic DeleteService(string domain, int service_id)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("service_id", service_id);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(service_id), service_id);
 
 			var request = new RestRequest(Method.DELETE)
 			{
@@ -168,8 +168,8 @@ namespace DNSimple
 		/// <param name="service_id">The ID of service to remove from the domain</param>
 		public dynamic DeleteService(int id, int service_id)
 		{
-			Require.Argument("id", id);
-			Require.Argument("service_id", service_id);
+			Require.Argument(nameof(id), id);
+			Require.Argument(nameof(service_id), service_id);
 
 			return DeleteService(id.ToString(), service_id);
 		}

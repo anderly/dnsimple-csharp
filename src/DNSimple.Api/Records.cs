@@ -15,7 +15,7 @@ namespace DNSimple
 		/// <param name="domain">The name of the domain for which to retrieve the DNS records</param>
 		public dynamic ListRecords(string domain)
 		{
-			Require.Argument("domain", domain);
+			Require.Argument(nameof(domain), domain);
 
 			var request = new RestRequest
 			{
@@ -33,7 +33,7 @@ namespace DNSimple
 		/// <param name="id">The ID of the domain for which to retrieve the DNS records</param>
 		public dynamic ListRecords(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return ListRecords(id.ToString());
 		}
@@ -46,8 +46,8 @@ namespace DNSimple
 		/// <param name="record_id">The ID of the DNS record to retrieve</param>
 		public dynamic GetRecord(string domain, int record_id)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("record_id", record_id);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(record_id), record_id);
 
 			var request = new RestRequest
 			{
@@ -67,8 +67,8 @@ namespace DNSimple
 		/// <param name="record_id">The ID of the DNS record to retrieve</param>
 		public dynamic GetRecord(int domainId, int record_id)
 		{
-			Require.Argument("domainId", domainId);
-			Require.Argument("record_id", record_id);
+			Require.Argument(nameof(domainId), domainId);
+			Require.Argument(nameof(record_id), record_id);
 
 			return GetRecord(domainId.ToString(), record_id);
 		}
@@ -85,8 +85,8 @@ namespace DNSimple
 		/// <param name="priority">The optional priority for this DNS record</param>
 		public dynamic AddRecord(string domain, string name, string record_type, string content, int? ttl = null, int? priority = null)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("name", name);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -125,7 +125,7 @@ namespace DNSimple
 		/// <param name="priority">The optional priority for this DNS record</param>
 		public dynamic AddRecord(int domainId, string name, string record_type, string content, int? ttl = null, int? priority = null)
 		{
-			Require.Argument("domainId", domainId);
+			Require.Argument(nameof(domainId), domainId);
 
 			return AddRecord(domainId.ToString(), name, record_type, content, ttl, priority);
 		}
@@ -142,8 +142,8 @@ namespace DNSimple
 		/// <param name="priority">The optional priority for this DNS record</param>
 		public dynamic UpdateRecord(string domain, int record_id, string name, string content, int? ttl = null, int? priority = null)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("record_id", record_id);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(record_id), record_id);
 
 			var request = new RestRequest(Method.PUT)
 			{
@@ -191,7 +191,7 @@ namespace DNSimple
 		/// <param name="priority">The optional priority for this DNS record</param>
 		public dynamic UpdateRecord(int domainId, int record_id, string name, string content, int? ttl = null, int? priority = null)
 		{
-			Require.Argument("domainId", domainId);
+			Require.Argument(nameof(domainId), domainId);
 
 			return UpdateRecord(domainId.ToString(), record_id, name, content, ttl, priority);
 		}
@@ -204,8 +204,8 @@ namespace DNSimple
 		/// <param name="record_id">The ID of DNS Record to remove from the domain</param>
 		public dynamic DeleteRecord(string domain, int record_id)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("record_id", record_id);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(record_id), record_id);
 
 			var request = new RestRequest(Method.DELETE)
 			{
@@ -226,8 +226,8 @@ namespace DNSimple
 		/// <param name="record_id">The ID of DNS Record to remove from the domain</param>
 		public dynamic DeleteRecord(int id, int record_id)
 		{
-			Require.Argument("id", id);
-			Require.Argument("record_id", record_id);
+			Require.Argument(nameof(id), id);
+			Require.Argument(nameof(record_id), record_id);
 
 			return DeleteRecord(id.ToString(), record_id);
 		}

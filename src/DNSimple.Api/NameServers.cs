@@ -18,7 +18,7 @@ namespace DNSimple
 		/// <param name="name_servers">List of name servers (up to 6) to set for the domain</param>
 		public dynamic SetNameServers(string name, params string[] name_servers)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 			Validate.IsBetween(name_servers.Length, 1, 6);
 
 			var request = new RestRequest(Method.POST)
