@@ -14,7 +14,7 @@ namespace DNSimple
 		/// <param name="name">The Name of the domain to retrieve</param>
 		public dynamic GetDomain(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest
 			              	{
@@ -27,7 +27,7 @@ namespace DNSimple
 
 		public dynamic GetDomain(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return GetDomain(id.ToString());
 		}
@@ -54,7 +54,7 @@ namespace DNSimple
 		/// <param name="name">The name of the domain.</param>
 		public dynamic AddDomain(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.POST)
 			              	{
@@ -75,7 +75,7 @@ namespace DNSimple
 		/// <param name="name">The name of the domain.</param>
 		public dynamic DeleteDomain(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.DELETE)
 			{
@@ -88,7 +88,7 @@ namespace DNSimple
 
 		public dynamic DeleteDomain(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			return DeleteDomain(id.ToString());
 		}
@@ -100,7 +100,7 @@ namespace DNSimple
 		/// <param name="name">The Name of the domain to check</param>
 		public dynamic CheckDomain(string name)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest
 			{
@@ -123,8 +123,8 @@ namespace DNSimple
 		/// <param name="registrant_id">ID for an existing account contact</param>
 		public dynamic RegisterDomain(string name, int registrant_id)
 		{
-			Require.Argument("name", name);
-			Require.Argument("registrant_id", registrant_id);
+			Require.Argument(nameof(name), name);
+			Require.Argument(nameof(registrant_id), registrant_id);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -159,8 +159,8 @@ namespace DNSimple
 		/// <param name="registrant_id">ID for an existing contact</param>
 		public dynamic TransferDomain(string name, int registrant_id, string authinfo = null)
 		{
-			Require.Argument("name", name);
-			Require.Argument("registrant_id", registrant_id);
+			Require.Argument(nameof(name), name);
+			Require.Argument(nameof(registrant_id), registrant_id);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -195,7 +195,7 @@ namespace DNSimple
 		/// <param name="renew_whois_privacy">Whether to renew the Whois Privacy Service</param>
 		public dynamic RenewDomain(string name, bool renew_whois_privacy = false)
 		{
-			Require.Argument("name", name);
+			Require.Argument(nameof(name), name);
 
 			var request = new RestRequest(Method.POST)
 			{

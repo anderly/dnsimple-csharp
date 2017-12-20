@@ -49,8 +49,8 @@ namespace DNSimple
 		/// <param name="email">The email for the user to add as a member to this domain</param>
 		public dynamic AddMember(string domain, string email)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("email", email);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(email), email);
 
 			var request = new RestRequest(Method.POST)
 			{
@@ -94,8 +94,8 @@ namespace DNSimple
 		/// <param name="email">The email for the user to add as a member to this domain</param>
 		public dynamic RemoveMember(string domain, string email)
 		{
-			Require.Argument("domain", domain);
-			Require.Argument("email", email);
+			Require.Argument(nameof(domain), domain);
+			Require.Argument(nameof(email), email);
 
 			var request = new RestRequest(Method.DELETE)
 			{

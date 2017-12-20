@@ -25,7 +25,7 @@ namespace DNSimple
 		/// <param name="name_servers">List of name servers (up to 4) to set for the domain</param>
 		public dynamic SetVanityNameServers(string domain, ServerSource server_source, params string[] name_servers)
 		{
-			Require.Argument("domain", domain);
+			Require.Argument(nameof(domain), domain);
 			if (server_source == ServerSource.External)
 			{
 				Validate.IsBetween(name_servers.Length, 1, 4);
@@ -62,7 +62,7 @@ namespace DNSimple
 		/// <param name="domain">The domain for which to remove the vanity name servers</param>
 		public dynamic RemoveVanityNameServers(string domain)
 		{
-			Require.Argument("domain", domain);
+			Require.Argument(nameof(domain), domain);
 
 			var request = new RestRequest(Method.DELETE)
 			{

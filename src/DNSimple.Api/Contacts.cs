@@ -28,7 +28,7 @@ namespace DNSimple
 		/// <param name="id">The id of the contact to retrieve</param>
 		public dynamic GetContact(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			var request = new RestRequest
 			{
@@ -63,19 +63,19 @@ namespace DNSimple
 									string country, string email_address, string phone, string organization_name = null, string job_title = null,
 									string fax = null, string phone_ext = null, string label = null, string address2 = null)
 		{
-			Require.Argument("first_name", first_name);
-			Require.Argument("last_name", last_name);
-			Require.Argument("address1", address1);
-			Require.Argument("city", city);
-			Require.Argument("state_province", state_province);
-			Require.Argument("postal_code", postal_code);
-			Require.Argument("country", country);
-			Require.Argument("email_address", email_address);
-			Require.Argument("phone", phone);
+			Require.Argument(nameof(first_name), first_name);
+			Require.Argument(nameof(last_name), last_name);
+			Require.Argument(nameof(address1), address1);
+			Require.Argument(nameof(city), city);
+			Require.Argument(nameof(state_province), state_province);
+			Require.Argument(nameof(postal_code), postal_code);
+			Require.Argument(nameof(country), country);
+			Require.Argument(nameof(email_address), email_address);
+			Require.Argument(nameof(phone), phone);
 
 			if (!string.IsNullOrWhiteSpace(organization_name))
 			{
-				Require.Argument("job_title", job_title);
+				Require.Argument(nameof(job_title), job_title);
 			}
 
 			var request = new RestRequest(Method.POST)
@@ -149,20 +149,20 @@ namespace DNSimple
 									string country, string email_address, string phone, string organization_name = null, string job_title = null,
 									string fax = null, string phone_ext = null, string label = null, string address2 = null)
 		{
-			Require.Argument("id", id);
-			Require.Argument("first_name", first_name);
-			Require.Argument("last_name", last_name);
-			Require.Argument("address1", address1);
-			Require.Argument("city", city);
-			Require.Argument("state_province", state_province);
-			Require.Argument("postal_code", postal_code);
-			Require.Argument("country", country);
-			Require.Argument("email_address", email_address);
-			Require.Argument("phone", phone);
+			Require.Argument(nameof(id), id);
+			Require.Argument(nameof(first_name), first_name);
+			Require.Argument(nameof(last_name), last_name);
+			Require.Argument(nameof(address1), address1);
+			Require.Argument(nameof(city), city);
+			Require.Argument(nameof(state_province), state_province);
+			Require.Argument(nameof(postal_code), postal_code);
+			Require.Argument(nameof(country), country);
+			Require.Argument(nameof(email_address), email_address);
+			Require.Argument(nameof(phone), phone);
 
 			if (!string.IsNullOrWhiteSpace(organization_name))
 			{
-				Require.Argument("job_title", job_title);
+				Require.Argument(nameof(job_title), job_title);
 			}
 
 			var request = new RestRequest(Method.PUT)
@@ -220,7 +220,7 @@ namespace DNSimple
 		/// <param name="name">The id of the contact to delete.</param>
 		public dynamic DeleteContact(int id)
 		{
-			Require.Argument("id", id);
+			Require.Argument(nameof(id), id);
 
 			var request = new RestRequest(Method.DELETE)
 			{
