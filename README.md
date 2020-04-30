@@ -1,5 +1,7 @@
 # A C# dynamic wrapper for the DNSimple REST API
 
+**DEPRECATED** This project has been deprecated in favor of the new official [DNSimple CSharp library](https://github.com/dnsimple/dnsimple-csharp).
+
 [![Nuget version](http://img.shields.io/nuget/v/dnsimple.svg?style=flat)][3]
 [![License](http://img.shields.io/badge/license-Apache-red.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 
